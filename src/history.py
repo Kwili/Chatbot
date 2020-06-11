@@ -13,8 +13,8 @@ class History:
 			self.req = req
 			self.res = res
 
-	def add_log(self, req, res):
+	def push(self, req, res):
 		self.logs.push(Log(req, res))
 
-	def remove_last_log(self):
+	def pop_last(self):
 		self.logs.pop()

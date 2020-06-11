@@ -28,7 +28,9 @@ def handle_message(message):
 @socketio.on('connect')
 def handle_connect():
 	add_user(request.sid)
-	emit('message', 'Hello and welcome hihi')
+	user = find_user(request.sid)
+	response = handle_input(user, '')
+	emit('message', response)
 
 @socketio.on('disconnect')
 def test_disconnect():

@@ -1,10 +1,11 @@
 from src.questions import Questions
+from src.history import History
 
 class User:
 	def __init__(self, sid):
 		self.sid = sid
-		self.next_question = Questions.START_CONVERSATION
-		self.history = []
+		self.question = Questions.START_CONVERSATION
+		self.history = History()
 	
 	def update_history(self, history):
 		self.history = history
