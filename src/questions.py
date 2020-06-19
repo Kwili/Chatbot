@@ -92,10 +92,17 @@ class Questions:
 		'fr': 'Où avez-vous mal?',
 		'en': 'proutlol'
 	}
-
+ 
 	START_CONVERSATION = {
-		'next': BODYPART,
-		'fun': start_conversation.start_conversation,
-		'fr': 'Bonjour et bienvenue sur Kwili',
+		'next': BODYPART, #Utilise un objet de next pour la question précédente en fonction de douleur/brulure/maladie etc
+		'fun': start_conversation.detect_intent,
+		'fr': 'Bonjour et bienvenue sur Kwili, comment puis-je vous aider ?',
 		'en': 'Hello and welcome on Kwili'
 	}
+
+	""" {
+		hurt: BODYPART,
+		sick: BODYPART,
+		burned: BODYPART
+	}
+	"""

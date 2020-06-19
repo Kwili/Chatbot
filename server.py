@@ -4,7 +4,7 @@ from flask import Flask, request
 from flask_socketio import SocketIO, send, emit
 from flask_cors import CORS, cross_origin
 
-from src.input_handler import handle_input
+from src.input_handler import handle_input, start_conversation
 from src.users import add_user, find_user
 
 import requests
@@ -29,7 +29,7 @@ def handle_message(message):
 def handle_connect():
 	add_user(request.sid)
 	user = find_user(request.sid)
-	response = handle_input(user, '')
+	response = start_conversation(user)
 	emit('message', response)
 
 @socketio.on('disconnect')

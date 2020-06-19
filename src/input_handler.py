@@ -12,5 +12,8 @@ def handle_input(user, req):
 	if ret is not True:
 		return 'Désolé mais je nai pas compris'
 	user.question = question['next']
-	print(user.history)
+	return user.question['fr']
+
+def start_conversation(user):
+	question = user.question
 	return question['fr']
