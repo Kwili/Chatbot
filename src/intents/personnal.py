@@ -1,3 +1,5 @@
+from src.keywords import yes, no
+
 def ask_smoker(req):
 	print('asking smoker')
 	return True
@@ -18,6 +20,7 @@ def ask_height(req):
 	print('askin height')
 	return True
 
-def ask_consent(req):
-	print('Asking consent')
-	return True
+def ask_consent(req: str):
+	if yes.detect(req) is True:
+		return True
+	return False

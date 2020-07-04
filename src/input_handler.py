@@ -6,9 +6,9 @@ def parse_input(req):
 def send_question(question):
 	print('I should send in the next question')
 
-def handle_input(user, req):
+def handle_input(user: object, req: str):
 	question = user.question
-	ret = question['fun'](req)
+	ret = question['fun'](req.lower())
 	if ret is not True:
 		return 'Désolé mais je nai pas compris'
 	user.question = question['next']

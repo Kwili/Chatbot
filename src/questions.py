@@ -54,14 +54,14 @@ class Questions:
 	HEIGHT = {
 		'next': WEIGHT,
 		'fun': personnal.ask_height,
-		'fr': 'Quelle tailles fais-tu',
+		'fr': 'Quelle tailles faites-vous ?',
 		'en': 'not yet'
 	}
 
 	PERSONNAL = {
 		'next': HEIGHT,
 		'fun': personnal.ask_consent,
-		'fr': 'Souhaitez vous que je pose des questions personnelles pour avoir plus dinfos blabla',
+		'fr': 'Souhaitez vous que je pose des questions personnelles pour écrire un compte-rendu plus précis ?',
 		'en': 'not yet'
 	}
 

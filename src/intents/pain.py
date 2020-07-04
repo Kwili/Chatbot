@@ -1,7 +1,9 @@
 from src.keywords import yes, no
 
 def frequency(req: str):
-	return True
+	if yes.detect(req) is True:
+		return True
+	return False
 
 def duration(req: str):
 	nbs = [int(s) for s in req.split() if s.isdigit()]
@@ -16,6 +18,5 @@ def duration(req: str):
 def level(req: str):
 	nbs = [int(s) for s in req.split() if s.isdigit()]
 	if len(nbs) > 0:
-		print('pain level: ', nbs[0])
 		return True
 	return False
