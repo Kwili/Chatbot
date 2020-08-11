@@ -12,7 +12,7 @@ import os
 application = Flask(__name__, static_url_path='/', static_folder='static/')
 application.config['SECRET_KEY'] = 'secret!'
 application.config['DEBUG'] = True
-socketio = SocketIO(application, cors_allowed_originis='*')
+socketio = SocketIO(application, cors_allowed_origins='*')
 
 PORT = 8080 if 'PORT' not in os.environ else os.environ['PORT']
 
