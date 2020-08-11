@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 
-from flask import Flask, render_template
-from flask_socketio import SocketIO
+from flask import Flask, request
+from flask_socketio import SocketIO, emit
 import json
-
 
 from src.input_handler import handle_input, start_conversation
 from src.users import add_user, find_user
@@ -21,8 +20,21 @@ def index():
 	return app.send_static_file('index.html')
 
 @socketio.on('message')
-def handle_source(json_data):
-  socketio.emit('message', 'mdrrr')
+def handle_message(message):
+	user = find_user(request.sid)
+	response = handle_input(user, message)
+	emit('message', response)
+
+@socketio.on('connect')
+def handle_connect():
+	add_user(request.sid)
+	user = find_user(request.sid)
+	response = start_conversation(user)
+	emit('message', response)
+
+@socketio.on('disconnect')
+def test_disconnect():
+    print('Client disconnected')
 
 if __name__ == "__main__":
-  socketio.run(app)
+	socketio.run(app)
