@@ -1,6 +1,10 @@
 from src.intents import start_conversation, bodypart, pain, personnal, recap
 
+''' Ca cest la class '''
+
 class Questions:
+	''' La classe Questions définie les constantes utilisées pour chaque question '''
+
 
 	END_CONVERSATION = {
 		'next': None,
@@ -92,17 +96,10 @@ class Questions:
 		'fr': 'Où avez-vous mal?',
 		'en': 'proutlol'
 	}
- 
+
 	START_CONVERSATION = {
-		'next': BODYPART, #Utilise un objet de next pour la question précédente en fonction de douleur/brulure/maladie etc
+		'next': BODYPART,
 		'fun': start_conversation.detect_intent,
 		'fr': 'Bonjour et bienvenue sur Kwili, comment puis-je vous aider ?',
 		'en': 'Hello and welcome on Kwili'
 	}
-
-	""" {
-		hurt: BODYPART,
-		sick: BODYPART,
-		burned: BODYPART
-	}
-	"""

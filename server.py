@@ -13,11 +13,9 @@ import os
 application = Flask(__name__, static_url_path='/', static_folder='static/')
 application.config['SECRET_KEY'] = 'secret!'
 application.config['DEBUG'] = True
-socketio = SocketIO()
+socketio = SocketIO(application, cors_allowed_originis='*')
 
 PORT = 8080 if 'PORT' not in os.environ else os.environ['PORT']
-
-socketio.init_app(application, cors_allowed_origins="*")
 
 @socketio.on('message')
 def handle_message(message):
