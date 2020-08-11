@@ -2,7 +2,6 @@
 
 from flask import Flask, request
 from flask_socketio import SocketIO, send, emit
-from flask_cors import CORS, cross_origin
 
 from src.input_handler import handle_input, start_conversation
 from src.users import add_user, find_user
@@ -40,7 +39,7 @@ def send_html():
 
 @application.route('/')
 def get_home():
-	return 'Chat service online on port ' + str(PORT)
+	return 'Chatbot is running'
 
 if __name__ == '__main__':
 	print('Starting server')
