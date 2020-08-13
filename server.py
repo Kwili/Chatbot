@@ -2,7 +2,6 @@
 
 from flask import Flask, request
 from flask_socketio import SocketIO, emit
-import json
 
 from src.input_handler import handle_input, start_conversation
 from src.users import add_user, find_user
@@ -16,26 +15,32 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 app.config['DEBUG'] = True if PORT == 8080 else False
 
+
 @app.route("/")
 def index():
-	return app.send_static_file('index.html')
+    return app.send_static_file('index.html')
+
 
 @socketio.on('message')
 def handle_message(message):
-	user = find_user(request.sid)
-	response = handle_input(user, message)
-	emit('message', response)
+    user = find_user(request.sid)
+    response = handle_input(user, message)
+    emit('message', response)
+
 
 @socketio.on('connect')
 def handle_connect():
-	add_user(request.sid)
-	user = find_user(request.sid)
-	response = start_conversation(user)
-	emit('message', response)
+    add_user(request.sid)
+    user = find_user(request.sid)
+    response = start_conversation(user)
+    emit('message', response)
+
 
 @socketio.on('disconnect')
-def test_disconnect():
-    print('Client disconnected')
+def disconnect():
+    user = find_user(request.sid)
+    print('User disconnected')
+
 
 if __name__ == "__main__":
-	socketio.run(app, port=PORT)
+    socketio.run(app, port=PORT)

@@ -1,105 +1,102 @@
 from src.intents import start_conversation, bodypart, pain, personnal, recap
 
-''' Ca cest la class '''
 
 class Questions:
-	''' La classe Questions définie les constantes utilisées pour chaque question '''
 
+    END_CONVERSATION = {
+        'next': None,
+        'fun': None,
+        'fr': 'Merci davoir utilisé Kwili, bye bye',
+        'en': 'not yet'
+    }
 
-	END_CONVERSATION = {
-		'next': None,
-		'fun': None,
-		'fr': 'Merci davoir utilisé Kwili, bye bye',
-		'en': 'not yet'
-	}
+    FIND_DOCTOR = {
+        'next': END_CONVERSATION,
+        'fun': None,
+        'fr': 'Souhaitez-vous que je vous aide à trouver un docteur ?',
+        'en': 'not yet'
+    }
 
-	FIND_DOCTOR = {
-		'next': END_CONVERSATION,
-		'fun': None,
-		'fr': 'Souhaitez-vous que je vous aide à trouver un docteur ?',
-		'en': 'not yet'
-	}
+    SEND_RECAP = {
+        'next': END_CONVERSATION,
+        'fun': recap.send_recap,
+        'fr': 'Souhaitez-vous télécharger le document ?',
+        'en': 'not yet'
+    }
 
-	SEND_RECAP = {
-		'next': END_CONVERSATION,
-		'fun': recap.send_recap,
-		'fr': 'Souhaitez-vous télécharger le document ?',
-		'en': 'not yet'
-	}
+    SMOKER = {
+        'next': SEND_RECAP,
+        'fun': personnal.ask_smoker,
+        'fr': 'Etes vous fumeur ?',
+        'en': 'not yet'
+    }
 
-	SMOKER = {
-		'next': SEND_RECAP,
-		'fun': personnal.ask_smoker,
-		'fr': 'Etes vous fumeur ?',
-		'en': 'not yet'
-	}
+    ALLERGIES = {
+        'next': SMOKER,
+        'fun': personnal.ask_allergies,
+        'fr': 'Avez-vous des allergies ?',
+        'en': 'not yet'
+    }
 
-	ALLERGIES = {
-		'next': SMOKER,
-		'fun': personnal.ask_allergies,
-		'fr': 'Avez-vous des allergies ?',
-		'en': 'not yet'
-	}
+    MEDICATION = {
+        'next': ALLERGIES,
+        'fun': personnal.ask_medication,
+        'fr': 'Prenez vous actuellement des médicaments ?',
+        'en': 'not yet'
+    }
 
-	MEDICATION = {
-		'next': ALLERGIES,
-		'fun': personnal.ask_medication,
-		'fr': 'Prenez vous actuellement des médicaments ?',
-		'en': 'not yet'
-	}
+    WEIGHT = {
+        'next': MEDICATION,
+        'fun': personnal.ask_weight,
+        'fr': 't gros ?',
+        'en': 'not yet'
+    }
 
-	WEIGHT = {
-		'next': MEDICATION,
-		'fun': personnal.ask_weight,
-		'fr': 't gros ?',
-		'en': 'not yet'
-	}
+    HEIGHT = {
+        'next': WEIGHT,
+        'fun': personnal.ask_height,
+        'fr': 'Quelle tailles faites-vous ?',
+        'en': 'not yet'
+    }
 
-	HEIGHT = {
-		'next': WEIGHT,
-		'fun': personnal.ask_height,
-		'fr': 'Quelle tailles faites-vous ?',
-		'en': 'not yet'
-	}
+    PERSONNAL = {
+        'next': HEIGHT,
+        'fun': personnal.ask_consent,
+        'fr': 'Souhaitez vous que je pose des questions personnelles pour écrire un compte-rendu plus précis ?',
+        'en': 'not yet'
+    }
 
-	PERSONNAL = {
-		'next': HEIGHT,
-		'fun': personnal.ask_consent,
-		'fr': 'Souhaitez vous que je pose des questions personnelles pour écrire un compte-rendu plus précis ?',
-		'en': 'not yet'
-	}
+    FREQUENCY = {
+        'next': PERSONNAL,
+        'fun': pain.frequency,
+        'fr': 'Avez-vous souvent mal à cet endroit ?',
+        'en': 'not yet'
+    }
 
-	FREQUENCY = {
-		'next': PERSONNAL,
-		'fun': pain.frequency,
-		'fr': 'Avez-vous souvent mal à cet endroit ?',
-		'en': 'not yet'
-	}
+    DURATION = {
+        'next': FREQUENCY,
+        'fun': pain.duration,
+        'fr': 'Depuis quand avez-vous mal ?',
+        'en': 'not yet'
+    }
 
-	DURATION = {
-		'next': FREQUENCY,
-		'fun': pain.duration,
-		'fr': 'Depuis quand avez-vous mal ?',
-		'en': 'not yet'
-	}
+    PAIN_LEVEL = {
+        'next': DURATION,
+        'fun': pain.level,
+        'fr': 'Sur une échelle de 1 à 10',
+        'en': 'not yet'
+    }
 
-	PAIN_LEVEL = {
-		'next': DURATION,
-		'fun': pain.level,
-		'fr': 'Sur une échelle de 1 à 10',
-		'en': 'not yet'
-	}
+    BODYPART = {
+        'next': PAIN_LEVEL,
+        'fun': bodypart.bodypart,
+        'fr': 'Où avez-vous mal?',
+        'en': 'proutlol'
+    }
 
-	BODYPART = {
-		'next': PAIN_LEVEL,
-		'fun': bodypart.bodypart,
-		'fr': 'Où avez-vous mal?',
-		'en': 'proutlol'
-	}
-
-	START_CONVERSATION = {
-		'next': BODYPART,
-		'fun': start_conversation.detect_intent,
-		'fr': 'Bonjour et bienvenue sur Kwili, comment puis-je vous aider ?',
-		'en': 'Hello and welcome on Kwili'
-	}
+    START_CONVERSATION = {
+        'next': BODYPART,
+        'fun': start_conversation.detect_intent,
+        'fr': 'Bonjour et bienvenue sur Kwili, comment puis-je vous aider ?',
+        'en': 'Hello and welcome on Kwili'
+    }
