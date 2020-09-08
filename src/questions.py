@@ -6,7 +6,7 @@ class Questions:
     END_CONVERSATION = {
         'next': None,
         'fun': None,
-        'fr': 'Merci davoir utilisé Kwili, bye bye',
+        'fr': 'Merci davoir utilisé Kwili, bonne journée!',
         'en': 'not yet'
     }
 
@@ -41,21 +41,21 @@ class Questions:
     MEDICATION = {
         'next': ALLERGIES,
         'fun': personnal.ask_medication,
-        'fr': 'Prenez vous actuellement des médicaments ?',
+        'fr': 'Prenez vous actuellement des médicaments ? Si oui, lesquels ?',
         'en': 'not yet'
     }
 
     WEIGHT = {
         'next': MEDICATION,
         'fun': personnal.ask_weight,
-        'fr': 't gros ?',
+        'fr': 'Quel est votre poids ?',
         'en': 'not yet'
     }
 
     HEIGHT = {
         'next': WEIGHT,
         'fun': personnal.ask_height,
-        'fr': 'Quelle tailles faites-vous ?',
+        'fr': 'Quelle taille faites-vous ?',
         'en': 'not yet'
     }
 
@@ -83,7 +83,7 @@ class Questions:
     PAIN_LEVEL = {
         'next': DURATION,
         'fun': pain.level,
-        'fr': 'Sur une échelle de 1 à 10',
+        'fr': 'Sur une échelle de 1 à 10, à combien évaluriez-vous votre douleur ?',
         'en': 'not yet'
     }
 
@@ -91,7 +91,7 @@ class Questions:
         'next': PAIN_LEVEL,
         'fun': bodypart.bodypart,
         'fr': 'Où avez-vous mal?',
-        'en': 'proutlol'
+        'en': 'Where are you hurt ?'
     }
 
     START_CONVERSATION = {

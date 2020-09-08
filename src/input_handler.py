@@ -11,7 +11,7 @@ def send_question(question):
 
 def handle_input(user: object, req: str):
     question = user.question
-    ret = question['fun'](req.lower())
+    ret = question['fun'](user, req.lower())
     if ret is not True:
         return 'Désolé mais je nai pas compris'
     user.question = question['next']

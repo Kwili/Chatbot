@@ -23,8 +23,9 @@ def detect_bodypart(req):
     return None
 
 
-def bodypart(req):
+def bodypart(user, req):
     ret = detect_bodypart(req)
     if ret is not None:
+		user.profile.bodypart = ret
         return True
     return False

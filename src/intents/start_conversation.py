@@ -1,2 +1,2 @@
-def detect_intent(req):
+def detect_intent(user, req):
     return True
