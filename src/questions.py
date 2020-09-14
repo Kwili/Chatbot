@@ -1,4 +1,5 @@
-from src.intents import start_conversation, bodypart, pain, personnal, recap
+from src.intents import start_conversation, bodypart, pain, personnal
+from src.pdf import recap
 
 
 class Questions:
@@ -20,25 +21,40 @@ class Questions:
     SEND_RECAP = {
         'next': END_CONVERSATION,
         'fun': recap.send_recap,
-        'fr': 'Souhaitez-vous télécharger le document ?',
+        'fr': 'Souhaitez-vous que ces informations soient rédigées dans un document présentable \
+                aux urgences ? Une fois le document téléchargé, vos informations seront supprimées.',
         'en': 'not yet'
     }
 
     SMOKER = {
         'next': SEND_RECAP,
         'fun': personnal.ask_smoker,
-        'fr': 'Etes vous fumeur ?',
+        'fr': 'Est-ce que vous fumez ? Si oui, combien de fois par semaine ? Si non, indiquez 0.',
         'en': 'not yet'
     }
 
     ALLERGIES = {
         'next': SMOKER,
         'fun': personnal.ask_allergies,
-        'fr': 'Avez-vous des allergies ?',
+        'fr': 'Avez-vous des allergies ? Si oui, lesquelles ?',
+        'en': 'not yet'
+    }
+
+    HAS_ALLERGIES = {
+        'next': ALLERGIES,
+        'fun': personnal.ask_allergies,
+        'fr': 'Avez-vous des allergies ? Si oui, lesquelles ?',
         'en': 'not yet'
     }
 
     MEDICATION = {
+        'next': HAS_ALLERGIES,
+        'fun': personnal.ask_medication,
+        'fr': 'Prenez vous actuellement des médicaments ? Si oui, lesquels ?',
+        'en': 'not yet'
+    }
+
+    HAS_MEDICATION = {
         'next': ALLERGIES,
         'fun': personnal.ask_medication,
         'fr': 'Prenez vous actuellement des médicaments ? Si oui, lesquels ?',
@@ -46,7 +62,7 @@ class Questions:
     }
 
     WEIGHT = {
-        'next': MEDICATION,
+        'next': HAS_MEDICATION,
         'fun': personnal.ask_weight,
         'fr': 'Quel est votre poids ?',
         'en': 'not yet'

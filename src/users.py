@@ -4,16 +4,21 @@ from src.history import History
 
 class Profile:
     def __init__(self):
-        self.pain_level: int
-        self.bodypart: str
-        self.duration: int
-        self.frequency: int
-        self.height: int
-        self.weight: int
-        self.medication: str
-        self.allergies: str
-        self.smoker: str
+        self.pain_level: int = 0
+        self.bodypart: str = ''
+        self.duration: int = 0
+        self.frequency: bool = False
+        self.height: str = ''
+        self.weight: str = ''
+        self.medication: str = ''
+        self.allergies: str = ''
+        self.smoke: int = 0
 
+    def __repr__(self):
+        return 'Bodypart: ' + self.bodypart + '\nPain Level: ' + str(self.pain_level) \
+            + '\nDuration: ' + str(self.duration) + '\nFrequency: ' + str(self.frequency) \
+            + '\nHeight: ' + self.height + '\nWeight: ' + self.weight + '\nMedication: ' + self.medication \
+            + '\nAllergies: ' + self.allergies + '\nSmoker: ' + str(self.smoke)
 
 
 class User:

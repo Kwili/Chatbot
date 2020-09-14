@@ -1,13 +1,18 @@
 #!/usr/bin/python3
 
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 from flask_socketio import SocketIO, emit
+from flask_cors import cross_origin
 
 from src.input_handler import handle_input, start_conversation
 from src.users import add_user, find_user
 
 import requests
 import os
+
+env = os.getenv('PYTHON_ENV', 'dev')
+
+default_dir = './reports/' if env == 'dev' else '/tmp/reports/'
 
 PORT = 8080 if 'PORT' not in os.environ else os.environ['PORT']
 
@@ -19,6 +24,15 @@ app.config['DEBUG'] = True if PORT == 8080 else False
 @app.route("/")
 def index():
     return app.send_static_file('index.html')
+
+
+@app.route('/reports/<report_id>', methods=['GET'])
+@cross_origin()
+def download_report(report_id):
+	filename = report_id + '.pdf'
+	if not os.path.exists(default_dir + filename):
+		return 'File does not exist', 400
+	return send_from_directory(directory=default_dir, filename=filename)
 
 
 @socketio.on('message')
