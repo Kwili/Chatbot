@@ -37,6 +37,7 @@ def download_report(report_id):
 
 @socketio.on('message')
 def handle_message(message):
+    print(message)
     user = find_user(request.sid)
     response = handle_input(user, message)
     emit('message', response)
