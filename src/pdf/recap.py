@@ -18,5 +18,7 @@ ensure_path(default_dir)
 
 def send_recap(user, req):
     session_id = str(uuid.uuid1())
+    print('creating pdf', session_id)
     create_pdf(default_dir, session_id, user.profile)
+    print('created pdf', default_url + 'reports/' + session_id)
     return default_url + 'reports/' + session_id
