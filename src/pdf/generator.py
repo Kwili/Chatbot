@@ -36,27 +36,18 @@ def create_pdf(default_dir, conversation_id, profile):
     append_block(body, '<font size="12">Poids: %s</font>' %
                  profile.weight, 12)
     smoke = profile.smoke
-    """ if smoke > 0:
+    if smoke != 0:
         append_block(body, '<font size="12">Fumeur: %s</font>' %
                         'Oui', 12)
         append_block(body, '<font size="12">Nombre de cigarettes par jour: %s</font>' %
                         smoke, 12)
-    else: """
-    append_block(body, '<font size="12">Fumeur: %s</font>' %
-                        'Non', 12)
-    """ if len(profile.allergies) > 0:
-        append_block(body, '<font size="12">Allergies:</font>', 12)
-        for a in profile.allergies:
-            ptext = '<font size="12">- %s</font>' % a.strip()
-            append_block(body, ptext, 0)
     else:
-        append_block(
-            body, '<font size="12">Aucune allergie n\'a été indiquée</font>', 12) """
-    """ if len(background) > 0:
-        append_block(body, '<font size="12">Antécédents:</font>', 12)
-        for b in background:
-            ptext = '<font size="12">- %s</font>' % b.strip()
-            append_block(body, ptext, 0) """
+        append_block(body, '<font size="12">Fumeur: %s</font>' %
+                            'Non', 12)
+    append_block(body, '<font size="12">Allergies: %s</font>' %
+                        profile.allergies, 12)
+    append_block(body, '<font size="12">Médicaments: %s</font>' %
+                        profile.medication, 12)
     body.append(Spacer(1, 48))
     append_block(body, '<font size="10">Made by Kwili</font>', 12)
     doc.build(body)

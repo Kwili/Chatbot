@@ -5,6 +5,9 @@ def frequency(user, req: str):
     if yes.detect(req) is True:
         user.profile.frequency = True
         return True
+    if no.detect(req) is True:
+        user.profile.frequency = False
+        return True
     return False
 
 
