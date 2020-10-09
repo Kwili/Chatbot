@@ -113,6 +113,6 @@ class Questions:
     START_CONVERSATION = {
         'next': BODYPART,
         'fun': start_conversation.detect_intent,
-        'fr': 'Bonjour et bienvenue sur Kwili, comment puis-je vous aider ?',
+        'fr': 'Comment puis-je vous aider ?',
         'en': 'Hello and welcome on Kwili'
     }
