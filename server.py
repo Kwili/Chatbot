@@ -15,6 +15,7 @@ env = os.getenv('PYTHON_ENV', 'dev')
 default_dir = './reports/' if env == 'dev' else '/tmp/reports/'
 
 PORT = 8080 if 'PORT' not in os.environ else os.environ['PORT']
+HOST = '127.0.0.1' if 'HOST' not in os.environ else os.environ['HOST']
 
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
@@ -57,4 +58,4 @@ def disconnect():
 
 
 if __name__ == "__main__":
-    socketio.run(app, port=PORT)
+    socketio.run(app, host=HOST, port=PORT)
