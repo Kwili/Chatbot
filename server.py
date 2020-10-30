@@ -18,7 +18,7 @@ PORT = 8080 if 'PORT' not in os.environ else os.environ['PORT']
 HOST = '127.0.0.1' if 'HOST' not in os.environ else os.environ['HOST']
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins="*")
+socketio = SocketIO(app, cors_allowed_origins="*", ping_timeout=30)
 app.config['DEBUG'] = True if PORT == 8080 else False
 
 
