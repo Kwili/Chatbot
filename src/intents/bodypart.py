@@ -1,24 +1,31 @@
-bp_array_fr = [
-    'bras', 'cheveu', 'cil', 'cœur', 'coeur', 'doigt', 'dos', 'front', 'genou',
+BP_ARRAY_FR = [
+    'tête', 'dos', 'cou', 'ventre',
+    'bras', 'cheveux', 'cil', 'cœur', 'doigt', 'coeur', 'front', 'genou',
     'nez', 'ongle', 'pied', 'poignet', 'sang', 'sourcil', 'visage', 'œil',
-    'oeil', 'yeux'
+    'oeil', 'yeux', 'tete',
     'barbe', 'bouche', 'cheville', 'dent', 'épaule', 'fesses', 'fesse', 'gorge',
     'jambe', 'joue', 'langue', 'lèvre', 'main', 'moustache', 'oreille', 'peau',
-    'poitrine', 'tête'
+    'poitrine',
 ]
 
-bp_array_en = []
+BP_ARRAY_EN = [
+    'head', 'back', 'neck', 'belly',
+    'arm', 'hair', 'eyelash', 'heart', 'finger', 'forehead', 'knee',
+    'nose', 'nail', 'feet', 'wrist', 'blood', 'eyebrow', 'face', 'eye', 'eyes',
+    'beard', 'mouth', 'ankle', 'teeth', 'tooth', 'shoulder', 'bottom', 'buttocks', 'throat',
+    'leg', 'cheek', 'tongue', 'lip', 'lips', 'head', 'mustache', 'ear', 'ears', 'skin', 'chest',
+]
 
 
 def detect_bodypart(req):
     l = req.split(' ')
     for s in l:
         ss = s
-        if s in bp_array_fr:
+        if s in BP_ARRAY_FR:
             return s
         if s.endswith('s'):
             ss = s[:-1]
-        if ss in bp_array_fr:
+        if ss in BP_ARRAY_FR:
             return s
     return None
 

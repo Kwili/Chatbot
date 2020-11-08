@@ -71,8 +71,8 @@
 				$('#m').val('');
 				return false;
 			});
-			socket.on('message', function (msg) {
-				$('#messages').append($('<li>').text(msg));
+			socket.on('message', function ({question, quick_replies}) {
+				$('#messages').append($('<li>').text(`${question}: ${JSON.stringify(quick_replies)}`));
 				window.scrollTo(0, document.body.scrollHeight);
 			});
 		});

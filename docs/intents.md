@@ -13,11 +13,11 @@ def detect_bodypart(req):
 	l = req.split(' ')
 	for s in l:
 		ss = s
-		if s in bp_array_fr:
+		if s in BP_ARRAY_FR:
 			return s
 		if s.endswith('s'):
 			ss = s[:-1]
-		if ss in bp_array_fr:
+		if ss in BP_ARRAY_FR:
 			return s
 	return None
 
