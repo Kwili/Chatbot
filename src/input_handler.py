@@ -10,13 +10,25 @@ def handle_input(user: object, req: str):
     ret = question['fun'](user, req.lower())
     if type(ret) is str:
         user.question = question['next']
-        return ret
+        return {
+            'question': ret,
+            'quick_replies': user.question['quick_replies'] if 'quick_replies' in user.question else None
+        }
     if ret is not True:
-        return 'Désolé mais je nai pas compris'
+        return {
+            'question': 'Désolé mais je nai pas compris',
+            'quick_replies': None
+        }
     user.question = question['next']
-    return user.question['fr']
+    return {
+        'question': user.question['fr'],
+        'quick_replies': user.question['quick_replies'] if 'quick_replies' in user.question else None
+    }
 
 
 def start_conversation(user):
     question = user.question
-    return question['fr']
+    return {
+        'question': question['fr'],
+        'quick_replies': user.question['quick_replies'] if 'quick_replies' in user.question else None
+    }
