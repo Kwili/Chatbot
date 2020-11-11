@@ -19,8 +19,8 @@ def handle_input(user: object, req: str):
         }
     if ret is not True:
         return {
-            'question': FRENCH_NOT_UNDERSTOOD if user.lang == 'fr' else ENGLISH_NOT_UNDERSTOOD,
-            'quick_replies': None
+            'question': question['error'][user.lang],
+            'quick_replies': question['quick_replies'][user.lang]
         }
     user.question = question['next']
     return {

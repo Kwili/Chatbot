@@ -15,7 +15,8 @@ class Questions:
         'next': None,
         'fun': None,
         'fr': 'Merci davoir utilisé Kwili, bonne journée!',
-        'en': 'not yet',
+        'en': 'Thanks for using Kwili! Have a good day.',
+        'error': None,
         'quick_replies': None
     }
 
@@ -23,7 +24,11 @@ class Questions:
         'next': END_CONVERSATION,
         'fun': None,
         'fr': 'Souhaitez-vous que je vous aide à trouver un docteur ?',
-        'en': 'not yet',
+        'en': 'Do you need help finding a doctor ?',
+        'error': {
+            'fr': "Désolé je n'ai pas compris. Vous pouvez me répondre par un simple 'oui' ou 'non'",
+            'en': "Sorry I did not understand. You can answer by a simple 'yes' or 'no'"
+        },
         'quick_replies': {
             'fr': [
                 single_reply('oui'),
@@ -41,7 +46,11 @@ class Questions:
         'fun': recap.send_recap,
         'fr': 'Souhaitez-vous que ces informations soient rédigées dans un document présentable \
                 aux urgences ? Une fois le document téléchargé, vos informations seront supprimées.',
-        'en': 'not yet',
+        'en': 'Do you want these informations to be written in a recap ? Once downloaded, your informations will be deleted.',
+        'error': {
+            'fr': "Désolé je n'ai pas compris. Vous pouvez me répondre par un simple 'oui' ou 'non'",
+            'en': "Sorry I did not understand. You can answer by a simple 'yes' or 'no'"
+        },
         'quick_replies': {
             'fr': [
                 single_reply('oui'),
@@ -58,7 +67,11 @@ class Questions:
         'next': SEND_RECAP,
         'fun': personnal.ask_smoker,
         'fr': 'Est-ce que vous fumez ? Si oui, combien de fois par semaine ? Si non, indiquez 0.',
-        'en': 'not yet',
+        'en': "Are you a smoker ? If so, how many times do you smoke per week ? If you don't, answer 0",
+        'error': {
+            'fr': "Désolé mais je n'ai pas compris. Combien de fois fumez-vous par semaine ?",
+            'en': "Sorry I did not understand that. How many times do you smoke per week ?"
+        },
         'quick_replies': {
             'fr': [
                 single_reply('0'),
@@ -78,6 +91,10 @@ class Questions:
         'fun': personnal.ask_allergies,
         'fr': 'Avez-vous des allergies ? Si oui, lesquelles ?',
         'en': 'Do you have any allergies ? If so, which ones ?',
+        'error': {
+            'fr': "Désolé mais je n'ai pas quelles étaient vos allergies.",
+            'en': "Sorry but I didn't understand your reply."
+        },
         'quick_replies': {
             'fr': [
                 single_reply('non'),
@@ -99,6 +116,10 @@ class Questions:
         'fun': personnal.ask_allergies,
         'fr': 'Avez-vous des allergies ? Si oui, lesquelles ?',
         'en': 'Do you have any allergies ? If so, which ones ',
+        'error': {
+            'fr': "Désolé mais je n'ai pas quelles étaient vos allergies.",
+            'en': "Sorry but I didn't understand your reply."
+        },
         'quick_replies': {
             'fr': [
                 single_reply('non'),
@@ -120,6 +141,10 @@ class Questions:
         'fun': personnal.ask_medication,
         'fr': 'Prenez vous actuellement des médicaments ? Si oui, lesquels ?',
         'en': 'Are you currently taking a medication ?',
+        'error': {
+            'fr': "Désolé mais je n'ai pas compris quels médicaments vous preniez.",
+            'en': "Sorry but I didn't understand your reply."
+        },
         'quick_replies': {
             'fr': [
                 single_reply('non'),
@@ -141,6 +166,10 @@ class Questions:
         'fun': personnal.ask_medication,
         'fr': 'Prenez vous actuellement des médicaments ? Si oui, lesquels ?',
         'en': 'Are you currently taking a medication ?',
+        'error': {
+            'fr': "Désolé mais je n'ai pas compris quels médicaments vous preniez.",
+            'en': "Sorry but I didn't understand your reply."
+        },
         'quick_replies': {
             'fr': [
                 single_reply('non'),
@@ -162,6 +191,10 @@ class Questions:
         'fun': personnal.ask_weight,
         'fr': 'Quel est votre poids ?',
         'en': 'How much do you weight ?',
+        'error': {
+            'fr': "Désolé mais je n'ai pas compris votre poids. Pouvez-vous me l'indiquer en kilogrammes ?",
+            'en': "Sorry but I didn't get your weight. Can you tell me in kilograms ?"
+        },
         'quick_replies': None
     }
 
@@ -170,6 +203,10 @@ class Questions:
         'fun': personnal.ask_height,
         'fr': 'Quelle taille faites-vous ?',
         'en': 'How tall are you ?',
+        'error': {
+            'fr': "Désolé mais je n'ai pas compris votre taille. Pouvez-vous me l'indiquer en centimètres ?",
+            'en': "Sorry but I didn't get your height. Can you tell me in centimeters ?"
+        },
         'quick_replies': None
     }
 
@@ -178,6 +215,10 @@ class Questions:
         'fun': personnal.ask_consent,
         'fr': 'Souhaitez vous que je pose des questions personnelles pour écrire un compte-rendu plus précis ?',
         'en': 'Do you want me to ask you some personnal questions in order to write a more precise recap ?',
+        'error': {
+            'fr': "Désolé je n'ai pas compris. Vous pouvez me répondre par un simple 'oui' ou 'non'",
+            'en': "Sorry I did not understand. You can answer by a simple 'yes' or 'no'"
+        },
         'quick_replies': {
             'fr': [
                 single_reply('oui'),
@@ -195,6 +236,10 @@ class Questions:
         'fun': pain.frequency,
         'fr': 'Avez-vous souvent mal à cet endroit ?',
         'en': 'Does this area hurt often ?',
+        'error': {
+            'fr': "Désolé mais je n'ai pas compris la fréquence de votre douleur.",
+            'en': "Sorry but I didn't understand your reply."
+        },
         'quick_replies': {
             'fr': [
                 single_reply('oui'),
@@ -212,6 +257,10 @@ class Questions:
         'fun': pain.duration,
         'fr': 'Depuis quand avez-vous mal ?',
         'en': 'How long have you been in pain ?',
+        'error': {
+            'fr': "Je n'ai pas compris depuis combien de temps vous avez mal. Pouvez-vous recommencer ?",
+            'en': "Sorry but I didn't understand. Can you start again ?"
+        },
         'quick_replies': {
             'fr': [
                 single_reply('quelques jours'),
@@ -231,6 +280,10 @@ class Questions:
         'fun': pain.level,
         'fr': 'Sur une échelle de 1 à 10, à combien évaluriez-vous votre douleur ?',
         'en': 'On a scale of 1 to 10, how would you rate your pain ?',
+        'error': {
+            'fr': "Désole mais je n'ai pas compris. Pouvez vous m'indiquer un chiffre ?",
+            'en': "Sorry but I didn't understand. Can you give me a number ?"
+        },
         'quick_replies': {
             'fr': [single_reply(f'{i}') for i in range(1, 11)],
             'en': [single_reply(f'{i}') for i in range(1, 11)]
@@ -242,6 +295,10 @@ class Questions:
         'fun': bodypart.bodypart,
         'fr': 'Où avez-vous mal?',
         'en': 'Where are you hurt ?',
+        'error': {
+            'fr': "Désole mais je n'ai pas compris où vous aviez mal. Pourriez-vous m'indique plus précisément ?",
+            'en': "Sorry but I didn't understand where you were hurt. Can you be more specific ?"
+        },
         'quick_replies': {
             'fr': [single_reply(i) for i in BP_ARRAY_FR[:5]],
             'en': [single_reply(i) for i in BP_ARRAY_EN[:5]],
@@ -253,6 +310,7 @@ class Questions:
         'fun': start_conversation.detect_intent,
         'fr': 'Comment puis-je vous aider ?',
         'en': 'Hello and welcome on Kwili',
+        'error': None,
         'quick_replies': {
             'fr': [
                 single_reply('J\'ai mal'),
