@@ -22,7 +22,8 @@ class Profile:
 
 
 class User:
-    def __init__(self, sid):
+    def __init__(self, sid, lang):
+        self.lang = lang
         self.sid = sid
         self.question = Questions.START_CONVERSATION
         self.history = History()
@@ -35,8 +36,8 @@ class User:
 users = []
 
 
-def add_user(sid):
-    users.append(User(sid))
+def add_user(sid, lang):
+    users.append(User(sid, lang))
 
 
 def find_user(sid):

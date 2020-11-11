@@ -77,7 +77,7 @@ class Questions:
         'next': SMOKER,
         'fun': personnal.ask_allergies,
         'fr': 'Avez-vous des allergies ? Si oui, lesquelles ?',
-        'en': 'not yet',
+        'en': 'Do you have any allergies ? If so, which ones ?',
         'quick_replies': {
             'fr': [
                 single_reply('non'),
@@ -98,7 +98,7 @@ class Questions:
         'next': ALLERGIES,
         'fun': personnal.ask_allergies,
         'fr': 'Avez-vous des allergies ? Si oui, lesquelles ?',
-        'en': 'not yet',
+        'en': 'Do you have any allergies ? If so, which ones ',
         'quick_replies': {
             'fr': [
                 single_reply('non'),
@@ -119,7 +119,7 @@ class Questions:
         'next': HAS_ALLERGIES,
         'fun': personnal.ask_medication,
         'fr': 'Prenez vous actuellement des médicaments ? Si oui, lesquels ?',
-        'en': 'not yet',
+        'en': 'Are you currently taking a medication ?',
         'quick_replies': {
             'fr': [
                 single_reply('non'),
@@ -140,7 +140,7 @@ class Questions:
         'next': ALLERGIES,
         'fun': personnal.ask_medication,
         'fr': 'Prenez vous actuellement des médicaments ? Si oui, lesquels ?',
-        'en': 'not yet',
+        'en': 'Are you currently taking a medication ?',
         'quick_replies': {
             'fr': [
                 single_reply('non'),
@@ -161,7 +161,7 @@ class Questions:
         'next': HAS_MEDICATION,
         'fun': personnal.ask_weight,
         'fr': 'Quel est votre poids ?',
-        'en': 'not yet',
+        'en': 'How much do you weight ?',
         'quick_replies': None
     }
 
@@ -169,7 +169,7 @@ class Questions:
         'next': WEIGHT,
         'fun': personnal.ask_height,
         'fr': 'Quelle taille faites-vous ?',
-        'en': 'not yet',
+        'en': 'How tall are you ?',
         'quick_replies': None
     }
 
@@ -177,7 +177,7 @@ class Questions:
         'next': HEIGHT,
         'fun': personnal.ask_consent,
         'fr': 'Souhaitez vous que je pose des questions personnelles pour écrire un compte-rendu plus précis ?',
-        'en': 'not yet',
+        'en': 'Do you want me to ask you some personnal questions in order to write a more precise recap ?',
         'quick_replies': {
             'fr': [
                 single_reply('oui'),
@@ -194,7 +194,7 @@ class Questions:
         'next': PERSONNAL,
         'fun': pain.frequency,
         'fr': 'Avez-vous souvent mal à cet endroit ?',
-        'en': 'not yet',
+        'en': 'Does this area hurt often ?',
         'quick_replies': {
             'fr': [
                 single_reply('oui'),
@@ -211,7 +211,7 @@ class Questions:
         'next': FREQUENCY,
         'fun': pain.duration,
         'fr': 'Depuis quand avez-vous mal ?',
-        'en': 'not yet',
+        'en': 'How long have you been in pain ?',
         'quick_replies': {
             'fr': [
                 single_reply('quelques jours'),
@@ -230,7 +230,7 @@ class Questions:
         'next': DURATION,
         'fun': pain.level,
         'fr': 'Sur une échelle de 1 à 10, à combien évaluriez-vous votre douleur ?',
-        'en': 'not yet',
+        'en': 'On a scale of 1 to 10, how would you rate your pain ?',
         'quick_replies': {
             'fr': [single_reply(f'{i}') for i in range(1, 11)],
             'en': [single_reply(f'{i}') for i in range(1, 11)]

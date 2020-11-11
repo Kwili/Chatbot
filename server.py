@@ -45,7 +45,8 @@ def handle_message(message):
 
 @socketio.on('connect')
 def handle_connect():
-    add_user(request.sid)
+    lang = request.args.get('lang') if 'lang' in request.args else 'fr'
+    add_user(request.sid, lang)
     user = find_user(request.sid)
     response = start_conversation(user)
     emit('message', response)

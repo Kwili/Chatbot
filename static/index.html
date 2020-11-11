@@ -1,4 +1,4 @@
-<!doctype html>
+	<!doctype html>
 <html>
 
 <head>
@@ -65,7 +65,7 @@
 	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 	<script>
 		$(function () {
-			var socket = io('/');
+			var socket = io('/', { 'query': 'lang=en' });
 			$('form').submit(function () {
 				socket.emit('message', $('#m').val());
 				$('#m').val('');
