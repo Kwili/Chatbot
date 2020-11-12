@@ -1,8 +1,5 @@
 from src.questions import Questions
 
-FRENCH_NOT_UNDERSTOOD = "Désolé mais je n'ai pas compris"
-ENGLISH_NOT_UNDERSTOOD = "Sorry but I didn't understand"
-
 
 def parse_input(req):
     message = req.lower()
@@ -15,7 +12,7 @@ def handle_input(user: object, req: str):
         user.question = question['next']
         return {
             'question': ret,
-            'quick_replies': user.question['quick_replies'][user.lang] if 'quick_replies' in user.question else None
+            'quick_replies': user.question['quick_replies'][user.lang] if user.question['quick_replies'] is not None else None
         }
     if ret is not True:
         return {
@@ -25,7 +22,7 @@ def handle_input(user: object, req: str):
     user.question = question['next']
     return {
         'question': user.question[user.lang],
-        'quick_replies': user.question['quick_replies'][user.lang] if 'quick_replies' in user.question else None
+        'quick_replies': user.question['quick_replies'][user.lang] if user.question['quick_replies'] is not None else None
     }
 
 
@@ -33,5 +30,5 @@ def start_conversation(user):
     question = user.question
     return {
         'question': question[user.lang],
-        'quick_replies': user.question['quick_replies'][user.lang] if 'quick_replies' in user.question else None
+        'quick_replies': user.question['quick_replies'][user.lang] if user.question['quick_replies'] is not None else None
     }
