@@ -16,9 +16,11 @@ def ensure_path(path):
 ensure_path(default_dir)
 
 
+def find_emergencies(user, req):
+    return True
+
 def send_recap(user, req):
     session_id = str(uuid.uuid1())
-    print('creating pdf', session_id)
     create_pdf(default_dir, session_id, user.profile)
-    print('created pdf', default_url + 'reports/' + session_id)
-    return default_url + 'reports/' + session_id
+    ret_string = 'Your recap is available here: ' if user.lang == 'en' else 'Votre compte rendu est disponible ici: '
+    return ret_string + default_url + 'reports/' + session_id + '.'

@@ -36,7 +36,7 @@ def create_pdf(default_dir, conversation_id, profile):
     append_block(body, '<font size="12">Poids: %s</font>' %
                  profile.weight, 12)
     smoke = profile.smoke
-    if smoke != 0:
+    if smoke != '0':
         append_block(body, '<font size="12">Fumeur: %s</font>' %
                         'Oui', 12)
         append_block(body, '<font size="12">Nombre de cigarettes par jour: %s</font>' %

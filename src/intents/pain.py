@@ -2,10 +2,10 @@ from src.keywords import yes, no
 
 
 def frequency(user, req: str):
-    if yes.detect(req) is True:
+    if yes.detect(user.lang, req) is True:
         user.profile.frequency = True
         return True
-    if no.detect(req) is True:
+    if no.detect(user.lang, req) is True:
         user.profile.frequency = False
         return True
     return False

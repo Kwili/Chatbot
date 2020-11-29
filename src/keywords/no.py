@@ -1,4 +1,12 @@
-no_array_fr = [
+NO_ARRAY_EN = [
+	'no',
+	'negative',
+	'dont',
+	'don\'t',
+	'disagree'
+]
+
+NO_ARRAY_FR = [
 	'non',
 	'négatif',
 	'no',
@@ -6,12 +14,10 @@ no_array_fr = [
 	'pas'
 ]
 
-def detect(req: str):
+def detect(lang, req: str):
+	no_array = NO_ARRAY_EN if lang == 'en' else NO_ARRAY_FR
 	l = req.split(' ')
 	for s in l:
-		ss = s
-		if s.endswith('s'):
-			ss = s[:-1]
-		if ss in no_array_fr:
+		if s in no_array:
 			return True
 	return False

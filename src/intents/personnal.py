@@ -9,12 +9,10 @@ def ask_smoker(user, req):
 
 def ask_allergies(user, req):
     user.profile.allergies = req
-    print('asking allergies')
     return True
 
 
 def has_allergies(user, req):
-    print('has allergies')
     return True
 
 
@@ -24,7 +22,6 @@ def ask_medication(user, req):
 
 
 def has_medication(user, req):
-    print('has medication')
     return True
 
 
@@ -45,6 +42,8 @@ def ask_height(user, req):
 
 
 def ask_consent(user, req: str):
-    if yes.detect(req) is True:
+    if yes.detect(user.lang, req) is True:
         return True
+    if no.detect(user.lang, req) is True:
+        return True, False
     return False

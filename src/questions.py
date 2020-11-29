@@ -41,8 +41,20 @@ class Questions:
         }
     }
 
-    SEND_RECAP = {
+    FIND_EMERGENCIES = {
         'next': END_CONVERSATION,
+        'fun': recap.find_emergencies,
+        'fr': 'Vous pouvez vous rendre sur notre carte afin de trouver les urgences les plus proches de chez vous ici: https://www.kwili.fr/map',
+        'en': 'You can go to our map to find the emergencies closest to you. Click here to be redirected: https://www.kwili.fr/map',
+        'error': {
+            'fr': "Désolé je n'ai pas compris. Vous pouvez me répondre par un simple 'oui' ou 'non'",
+            'en': "Sorry I did not understand. You can answer by a simple 'yes' or 'no'"
+        },
+        'quick_replies': None
+    }
+
+    SEND_RECAP = {
+        'next': FIND_EMERGENCIES,
         'fun': recap.send_recap,
         'fr': 'Souhaitez-vous que ces informations soient rédigées dans un document présentable \
                 aux urgences ? Une fois le document téléchargé, vos informations seront supprimées.',
@@ -215,6 +227,10 @@ class Questions:
         'fun': personnal.ask_consent,
         'fr': 'Souhaitez vous que je pose des questions personnelles pour écrire un compte-rendu plus précis ?',
         'en': 'Do you want me to ask you some personnal questions in order to write a more precise recap ?',
+        'no_answer': {
+            'en': "Very well. In this case, we will recommend you to go see a doctor. You can easily find one here: https://www.doctolib.fr/medecin-generaliste",
+            'fr': "Très bien. Dans ce cas, je vous recommande d'aller voir un médecin généraliste afin qu'il puisse vous examiner. Vous pouvez facilement en trouver un ici: https://www.doctolib.fr/medecin-generaliste"
+        },
         'error': {
             'fr': "Désolé je n'ai pas compris. Vous pouvez me répondre par un simple 'oui' ou 'non'",
             'en': "Sorry I did not understand. You can answer by a simple 'yes' or 'no'"

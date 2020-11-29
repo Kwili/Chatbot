@@ -1,10 +1,13 @@
-yes_array_en = [
+YES_ARRAY_EN = [
 	'yes',
 	'please',
-	'positive'
+	'positive',
+	'ye',
+	'do it',
+	'do'
 ]
 
-yes_array_fr = [
+YES_ARRAY_FR = [
 	'oui',
 	'positif',
 	'stp',
@@ -13,12 +16,10 @@ yes_array_fr = [
 	'fais-le'
 ]
 
-def detect(req: str):
+def detect(lang, req: str):
+	yes_array = YES_ARRAY_EN if lang == 'en' else YES_ARRAY_FR
 	l = req.split(' ')
 	for s in l:
-		ss = s
-		if s.endswith('s'):
-			ss = s[:-1]
-		if ss in yes_array_fr:
+		if s in yes_array:
 			return True
 	return False
