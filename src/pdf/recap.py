@@ -5,7 +5,7 @@ import os
 env = os.getenv('PYTHON_ENV', 'dev')
 
 default_dir = './reports/' if env == 'dev' else '/tmp/reports/'
-default_url = 'http://localhost:8080/' if env == 'dev' else 'http://kwili-bot.herokuapp.com/'
+default_url = 'http://localhost:8080/' if env == 'dev' else 'https://kwili-bot.herokuapp.com/'
 
 
 def ensure_path(path):

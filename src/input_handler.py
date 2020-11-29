@@ -15,7 +15,6 @@ def handle_input(user: object, req: str):
             'quick_replies': user.question['quick_replies'][user.lang] if user.question['quick_replies'] is not None else None
         }
     if type(ret) is tuple:
-        print('in here')
         user.question = Questions.END_CONVERSATION
         return {
             'question': question['no_answer'][user.lang],
@@ -24,7 +23,7 @@ def handle_input(user: object, req: str):
     if ret is not True:
         return {
             'question': question['error'][user.lang],
-            'quick_replies': question['quick_replies'][user.lang]
+            'quick_replies': user.question['quick_replies'][user.lang] if user.question['quick_replies'] is not None else None
         }
     user.question = question['next']
     return {
